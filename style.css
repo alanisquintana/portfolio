@@ -226,21 +226,16 @@ main {
   padding: 3rem 0 2rem;
 }
 
-/* Avatar com iniciais em vez de foto */
+/* Foto de perfil circular */
 .hero-avatar {
   flex-shrink: 0;
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -1px;
+  object-fit: cover;        /* garante que a foto preencha sem distorcer */
+  object-position: center top; /* foca na parte superior (rosto) */
   box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+  border: 3px solid var(--color-primary);
 }
 
 .hero-content h1 {
@@ -621,7 +616,7 @@ footer a { color: var(--color-primary); font-weight: 500; }
     gap: 1.5rem;
     padding-top: 1.5rem;
   }
-  .hero-avatar       { width: 120px; height: 120px; font-size: 2.2rem; margin: 0 auto; }
+  .hero-avatar       { width: 120px; height: 120px; margin: 0 auto; }
   .hero-content h1   { font-size: 1.8rem; }
   .hero-desc         { max-width: 100%; }
   .hero-cta          { justify-content: center; }
