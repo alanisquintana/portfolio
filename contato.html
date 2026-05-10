@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato com Alanis Quintana Teixeira — Desenvolvedora de Software." />
+  <title>Alanis Quintana | Contato</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark-theme');</script>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR — menu fixo presente em todas as páginas
+       ========================================== -->
+  <header>
+    <nav class="navbar" aria-label="Navegação principal">
+      <div class="nav-container">
+
+        <a href="index.html" class="nav-logo" aria-label="Início">AQT</a>
+
+        <ul class="nav-menu" id="nav-menu" role="list">
+          <li><a href="index.html"     class="nav-link">Sobre Mim</a></li>
+          <li><a href="formacao.html"  class="nav-link">Formação</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="contato.html"   class="nav-link">Contato</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <button id="btn-theme" class="btn-theme" aria-label="Alternar tema claro/escuro">
+            <span class="icon-sun"  aria-hidden="true">☀️</span>
+            <span class="icon-moon" aria-hidden="true">🌙</span>
+          </button>
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       CONTEÚDO PRINCIPAL
+       ========================================== -->
+  <main>
+    <div class="container">
+
+      <!-- Cabeçalho da página -->
+      <section style="padding-top: 1rem;">
+        <h1 style="font-size: 2rem; font-weight: 800;">Contato</h1>
+        <p style="color: var(--color-text-muted); margin-top: 0.5rem; font-size: 1rem;">
+          Gostou do que viu? Adoraria conversar sobre projetos e oportunidades.
+        </p>
+      </section>
+
+      <!-- ── Layout: info à esquerda, formulário à direita ── -->
+      <section class="section" aria-labelledby="contact-section-title">
+        <h2 class="section-title" id="contact-section-title" style="display:none;">Formulário de Contato</h2>
+        <div class="contact-layout">
+
+          <!-- ── Informações de Contato ── -->
+          <div class="contact-info">
+            <h2>Vamos conversar!</h2>
+            <p>
+              Estou aberta a oportunidades de estágio, projetos freelance e
+              colaborações. Sinta-se à vontade para entrar em contato pelo
+              formulário ao lado ou pelos links abaixo.
+            </p>
+
+            <div class="contact-links" aria-label="Links de contato">
+              <div class="contact-link-item">
+                <span aria-hidden="true">🐙</span>
+                <span>GitHub:</span>
+                <a
+                  href="https://github.com/alanisquintana"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/alanisquintana
+                </a>
+              </div>
+
+              <div class="contact-link-item">
+                <span aria-hidden="true">📍</span>
+                <span>Localização: Brasil</span>
+              </div>
+
+              <div class="contact-link-item">
+                <span aria-hidden="true">🎓</span>
+                <span>Área: Ciência da Computação</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Formulário de Contato ── -->
+          <!-- novalidate: desativa validação nativa do browser; usamos JS para controle total -->
+          <form id="contact-form" novalidate aria-label="Formulário de contato">
+
+            <!-- Campo: Nome -->
+            <div class="form-group">
+              <label class="form-label" for="nome">
+                Nome <span aria-hidden="true" style="color: var(--color-error);">*</span>
+              </label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                class="form-input"
+                placeholder="Seu nome completo"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="nome-error"
+              />
+              <!-- Mensagem de erro inline — exibida via JS -->
+              <span id="nome-error" class="field-error" role="alert"></span>
+            </div>
+
+            <!-- Campo: E-mail -->
+            <div class="form-group">
+              <label class="form-label" for="email">
+                E-mail <span aria-hidden="true" style="color: var(--color-error);">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="seu@email.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              />
+              <span id="email-error" class="field-error" role="alert"></span>
+            </div>
+
+            <!-- Campo: Assunto (opcional) -->
+            <div class="form-group">
+              <label class="form-label" for="assunto">Assunto</label>
+              <input
+                type="text"
+                id="assunto"
+                name="assunto"
+                class="form-input"
+                placeholder="Sobre o que deseja falar?"
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Campo: Mensagem -->
+            <div class="form-group">
+              <label class="form-label" for="mensagem">
+                Mensagem <span aria-hidden="true" style="color: var(--color-error);">*</span>
+              </label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                class="form-textarea"
+                placeholder="Escreva sua mensagem aqui..."
+                required
+                aria-required="true"
+                aria-describedby="mensagem-error"
+              ></textarea>
+              <span id="mensagem-error" class="field-error" role="alert"></span>
+            </div>
+
+            <!-- Botão de envio -->
+            <button type="submit" id="btn-submit" class="btn btn-primary btn-submit">
+              Enviar Mensagem
+            </button>
+
+            <!-- Área de feedback pós-submit (sucesso ou erro) -->
+            <!-- aria-live="polite" garante que leitores de tela anunciem a mensagem -->
+            <div
+              id="form-feedback"
+              class="form-feedback"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+          </form>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <p>© 2026 <strong>Alanis Quintana Teixeira</strong> · Desenvolvido com HTML, CSS e JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,635 @@
+/* ==========================================
+   style.css — Portfólio de Alanis Quintana Teixeira
+   Tema claro/escuro via custom properties CSS.
+   Mobile-first; breakpoint principal: 768px.
+   ========================================== */
+
+/* ==========================================
+   VARIÁVEIS — TEMA CLARO (padrão)
+   ========================================== */
+:root {
+  /* Cores */
+  --color-bg:            #f5f5f7;
+  --color-surface:       #ffffff;
+  --color-primary:       #7c3aed;       /* Roxo/violeta principal */
+  --color-primary-dark:  #5b21b6;
+  --color-primary-light: #ede9fe;
+  --color-text:          #1f1f2e;
+  --color-text-muted:    #6b7280;
+  --color-border:        #e5e7eb;
+  --color-shadow:        rgba(0, 0, 0, 0.08);
+  --color-nav-bg:        rgba(255, 255, 255, 0.95);
+  --color-error:         #dc2626;
+  --color-success:       #16a34a;
+
+  /* Tipografia */
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Consolas', 'Courier New', monospace;
+
+  /* Layout */
+  --nav-height: 64px;
+  --radius:     12px;
+  --radius-sm:  6px;
+  --transition: 0.3s ease;
+}
+
+/* ==========================================
+   TEMA ESCURO — sobrescreve as variáveis de cor
+   Aplicado via script inline no <head> em html.dark-theme
+   para evitar flash de tema incorreto (FOUC).
+   ========================================== */
+html.dark-theme {
+  --color-bg:            #0f0f1a;
+  --color-surface:       #1a1a2e;
+  --color-primary:       #a78bfa;
+  --color-primary-dark:  #7c3aed;
+  --color-primary-light: #2e1065;
+  --color-text:          #f1f0ff;
+  --color-text-muted:    #a1a1aa;
+  --color-border:        #2d2d4e;
+  --color-shadow:        rgba(0, 0, 0, 0.3);
+  --color-nav-bg:        rgba(15, 15, 26, 0.95);
+}
+
+/* ==========================================
+   RESET BÁSICO
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Transição suave ao trocar de tema */
+  transition: background-color var(--transition), color var(--transition);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--color-primary-dark); }
+
+img { max-width: 100%; display: block; }
+ul  { list-style: none; }
+
+/* ==========================================
+   NAVBAR — fixa no topo em todas as páginas
+   ========================================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background-color: var(--color-nav-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.5px;
+}
+.nav-logo:hover { color: var(--color-primary-dark); }
+
+/* Links de navegação */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: background-color var(--transition), color var(--transition);
+}
+.nav-link:hover,
+.nav-link.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+/* Controles da navbar (tema + hambúrguer) */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botão de alternância de tema */
+.btn-theme {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+.btn-theme:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Ícones de tema — JS alterna entre ☀️ e 🌙 via classe .dark-theme */
+.btn-theme .icon-sun  { display: none;   }
+.btn-theme .icon-moon { display: inline; }
+html.dark-theme .btn-theme .icon-sun  { display: inline; }
+html.dark-theme .btn-theme .icon-moon { display: none;   }
+
+/* ── Botão Hambúrguer — visível apenas em mobile ── */
+.nav-toggle {
+  display: none; /* Oculto em desktop; exibido via media query */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Animação hambúrguer → X quando o menu está aberto */
+.nav-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg);  }
+.nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0);          }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg);}
+
+/* ==========================================
+   LAYOUT PRINCIPAL
+   ========================================== */
+main {
+  flex: 1;
+  /* Compensa a altura da navbar fixa */
+  padding-top: calc(var(--nav-height) + 2rem);
+  padding-bottom: 4rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================
+   HERO — Seção de Apresentação (index.html)
+   ========================================== */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 0 2rem;
+}
+
+/* Avatar com iniciais em vez de foto */
+.hero-avatar {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+}
+
+.hero-content h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+.hero-content h1 span { color: var(--color-primary); }
+
+.hero-subtitle {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.hero-desc {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.hero-cta {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   BOTÕES
+   ========================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), transform 0.15s;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary { background-color: var(--color-primary); color: #ffffff; }
+.btn-primary:hover { background-color: var(--color-primary-dark); color: #ffffff; }
+
+.btn-outline { background-color: transparent; border-color: var(--color-primary); color: var(--color-primary); }
+.btn-outline:hover { background-color: var(--color-primary-light); }
+
+/* ==========================================
+   CARDS GENÉRICOS
+   ========================================== */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: 0 2px 12px var(--color-shadow);
+  transition: background-color var(--transition), border-color var(--transition),
+              box-shadow var(--transition), transform 0.2s;
+}
+.card:hover {
+  box-shadow: 0 6px 24px var(--color-shadow);
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+   SEÇÕES GENÉRICAS
+   ========================================== */
+.section { margin-top: 3.5rem; }
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+/* Linha decorativa abaixo do título de seção */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 3rem;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ==========================================
+   HOBBIES / TAGS
+   ========================================== */
+.hobbies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hobby-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* ==========================================
+   FORMAÇÃO — Timeline Vertical
+   ========================================== */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+/* Linha vertical da timeline */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.4rem; bottom: 0;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+/* Bolinha marcadora na timeline */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.375rem;
+  top: 0.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.timeline-period {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+.timeline-title    { font-size: 1.05rem; font-weight: 700; }
+.timeline-subtitle { font-size: 0.9rem; color: var(--color-text-muted); margin-top: 0.1rem; }
+.timeline-desc     { margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; }
+
+/* ==========================================
+   HABILIDADES / SKILLS GRID
+   ========================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  text-align: center;
+  transition: background-color var(--transition), border-color var(--transition), transform 0.2s;
+}
+.skill-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.skill-name { font-size: 0.9rem; font-weight: 600; color: var(--color-text); }
+
+/* ==========================================
+   PORTFÓLIO — Cards de Projeto
+   ========================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 2px 12px var(--color-shadow);
+  transition: background-color var(--transition), border-color var(--transition),
+              box-shadow var(--transition), transform 0.2s;
+}
+.project-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  transform: translateY(-4px);
+}
+
+.project-header     { display: flex; align-items: flex-start; gap: 1rem; }
+.project-icon       { font-size: 2rem; line-height: 1; flex-shrink: 0; }
+.project-title      { font-size: 1.05rem; font-weight: 700; line-height: 1.3; }
+.project-org        { font-size: 0.8rem; color: var(--color-primary); font-weight: 600; margin-top: 0.15rem; }
+.project-desc       { font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.6; flex: 1; }
+
+.project-tags       { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.project-tag {
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  font-size: 0.87rem;
+  font-weight: 600;
+  align-self: flex-start;
+  transition: background-color var(--transition), transform 0.15s;
+}
+.project-link:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ==========================================
+   FORMULÁRIO DE CONTATO
+   ========================================== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info h2    { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+.contact-info p     { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+.contact-links      { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.contact-link-item  { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--color-text); }
+.contact-link-item a{ font-weight: 600; }
+
+.form-group   { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1.25rem; }
+.form-label   { font-size: 0.88rem; font-weight: 600; color: var(--color-text); }
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color var(--transition), background-color var(--transition);
+  outline: none;
+}
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+/* Estado de erro no campo */
+.form-input.error,
+.form-textarea.error { border-color: var(--color-error); }
+
+.form-textarea { resize: vertical; min-height: 140px; }
+
+/* Mensagem de erro inline abaixo do campo */
+.field-error         { font-size: 0.8rem; color: var(--color-error); display: none; }
+.field-error.visible { display: block; }
+
+/* Feedback após submit */
+.form-feedback {
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: none;
+  margin-top: 1rem;
+}
+.form-feedback.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  display: block;
+}
+/* Tema escuro: ajusta as cores do feedback */
+html.dark-theme .form-feedback.success {
+  background-color: #14532d;
+  color: #86efac;
+  border-color: #166534;
+}
+
+.btn-submit           { width: 100%; padding: 0.75rem; justify-content: center; font-size: 1rem; }
+.btn-submit:disabled  { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 1.25rem 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+footer a { color: var(--color-primary); font-weight: 500; }
+
+/* ==========================================
+   RESPONSIVO — MOBILE (< 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Exibe o botão hambúrguer em mobile */
+  .nav-toggle { display: flex; }
+
+  /* Menu de navegação vira dropdown em mobile */
+  .nav-menu {
+    position: absolute;
+    top: var(--nav-height);
+    left: 0; right: 0;
+    background-color: var(--color-nav-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem 1rem 1rem;
+    gap: 0.25rem;
+    /* Oculto por padrão — transição suave via max-height */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+  }
+  /* Menu aberto — classe adicionada via JS */
+  .nav-menu.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-link { padding: 0.7rem 1rem; }
+
+  /* Hero em coluna única no mobile */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .hero-avatar       { width: 120px; height: 120px; font-size: 2.2rem; margin: 0 auto; }
+  .hero-content h1   { font-size: 1.8rem; }
+  .hero-desc         { max-width: 100%; }
+  .hero-cta          { justify-content: center; }
+
+  /* Layout do contato em coluna única */
+  .contact-layout    { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* Projetos em coluna única */
+  .projects-grid     { grid-template-columns: 1fr; }
+  .skills-grid       { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}

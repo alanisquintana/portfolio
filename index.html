@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Alanis Quintana Teixeira — Desenvolvedora de Software e estudante de Ciência da Computação." />
+  <title>Alanis Quintana | Sobre Mim</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark-theme');</script>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR — menu fixo presente em todas as páginas
+       ========================================== -->
+  <header>
+    <nav class="navbar" aria-label="Navegação principal">
+      <div class="nav-container">
+
+        <!-- Logo com iniciais -->
+        <a href="index.html" class="nav-logo" aria-label="Início">AQT</a>
+
+        <!-- Links de navegação -->
+        <ul class="nav-menu" id="nav-menu" role="list">
+          <li><a href="index.html"     class="nav-link">Sobre Mim</a></li>
+          <li><a href="formacao.html"  class="nav-link">Formação</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="contato.html"   class="nav-link">Contato</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <!-- Botão de alternância de tema claro/escuro -->
+          <button id="btn-theme" class="btn-theme" aria-label="Alternar tema claro/escuro">
+            <span class="icon-sun"  aria-hidden="true">☀️</span>
+            <span class="icon-moon" aria-hidden="true">🌙</span>
+          </button>
+
+          <!-- Botão hambúrguer — visível apenas em mobile -->
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       CONTEÚDO PRINCIPAL
+       ========================================== -->
+  <main>
+    <div class="container">
+
+      <!-- ── Hero: apresentação ── -->
+      <section class="hero" aria-labelledby="hero-name">
+
+        <!-- Avatar com iniciais -->
+        <div class="hero-avatar" aria-label="Avatar com as iniciais AQT">AQT</div>
+
+        <div class="hero-content">
+          <h1 id="hero-name">
+            Olá, eu sou<br>
+            <span>Alanis Quintana</span>
+          </h1>
+          <p class="hero-subtitle">Desenvolvedora de Software · Ciência da Computação</p>
+          <p class="hero-desc">
+            Desenvolvedora de Software com mais de três anos de experiência e estudante de Ciência da Computação.
+            Tenho interesse especial em desenvolvimento backend,
+            arquitetura de sistemas e desafios técnicos que exigem
+            criatividade e raciocínio analítico.
+          </p>
+          <div class="hero-cta">
+            <a href="portfolio.html" class="btn btn-primary">Ver Portfólio</a>
+            <a href="contato.html"   class="btn btn-outline">Entrar em Contato</a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ── Hobbies ── -->
+      <section class="section" aria-labelledby="hobbies-title">
+        <h2 class="section-title" id="hobbies-title">Interesses &amp; Hobbies</h2>
+        <ul class="hobbies-list" role="list">
+          <li class="hobby-tag">🎮 Jogos</li>
+          <li class="hobby-tag">📚 Leitura</li>
+          <li class="hobby-tag">✍️ Escrita</li>
+          <li class="hobby-tag">🌍 Idiomas</li>
+        </ul>
+      </section>
+
+      <!-- ── Sobre Mim ── -->
+      <section class="section" aria-labelledby="about-title">
+        <h2 class="section-title" id="about-title">Sobre Mim</h2>
+        <div class="card" style="display:flex; flex-direction:column; gap:1rem;">
+          <p>
+            Me chamo <strong>Alanis Quintana Teixeira</strong> e sou estudante de
+            Ciência da Computação com foco em desenvolvimento de software. Tenho
+            experiência com projetos práticos nacionais e internacionais, atuando nos setores varejista, 
+            judicial, financeiro, logístico e Enterprise.
+          </p>
+          <p>
+            Sou movida pela curiosidade intelectual e pelo prazer de resolver
+            problemas complexos. Adoro aprender novos idiomas — tanto naturais
+            quanto de programação — e nas horas vagas mergulho em bons livros,
+            jogos e na escrita criativa.
+          </p>
+          <p>
+            Estou sempre em busca de oportunidades que me desafiem a crescer como
+            desenvolvedora e como profissional. Se você quiser conversar sobre
+            tecnologia, projetos ou oportunidades, não hesite em
+            <a href="contato.html">entrar em contato</a>!
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <p>© 2026 <strong>Alanis Quintana Teixeira</strong> · Desenvolvido com HTML, CSS e JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

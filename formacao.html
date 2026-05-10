@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Formação acadêmica e cursos de Alanis Quintana Teixeira — Ciência da Computação." />
+  <title>Alanis Quintana | Formação</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark-theme');</script>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR — menu fixo presente em todas as páginas
+       ========================================== -->
+  <header>
+    <nav class="navbar" aria-label="Navegação principal">
+      <div class="nav-container">
+
+        <a href="index.html" class="nav-logo" aria-label="Início">AQT</a>
+
+        <ul class="nav-menu" id="nav-menu" role="list">
+          <li><a href="index.html"     class="nav-link">Sobre Mim</a></li>
+          <li><a href="formacao.html"  class="nav-link">Formação</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="contato.html"   class="nav-link">Contato</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <button id="btn-theme" class="btn-theme" aria-label="Alternar tema claro/escuro">
+            <span class="icon-sun"  aria-hidden="true">☀️</span>
+            <span class="icon-moon" aria-hidden="true">🌙</span>
+          </button>
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       CONTEÚDO PRINCIPAL
+       ========================================== -->
+  <main>
+    <div class="container">
+
+      <!-- Cabeçalho da página -->
+      <section style="padding-top: 1rem;">
+        <h1 style="font-size: 2rem; font-weight: 800;">Formação &amp; Qualificações</h1>
+        <p style="color: var(--color-text-muted); margin-top: 0.5rem; font-size: 1rem;">
+          Minha trajetória acadêmica e os cursos que moldaram meu desenvolvimento.
+        </p>
+      </section>
+
+      <!-- ── Formação Acadêmica ── -->
+      <section class="section" aria-labelledby="academic-title">
+        <h2 class="section-title" id="academic-title">Formação Acadêmica</h2>
+        <div class="timeline" role="list">
+
+          <article class="timeline-item" role="listitem">
+            <p class="timeline-period">2024 – Presente</p>
+            <h3 class="timeline-title">Bacharelado em Ciência da Computação</h3>
+            <p class="timeline-subtitle">Centro Universitário Internacional (UNINTER) · Online</p>
+            <p class="timeline-desc">
+              Curso com ênfase em algoritmos, estruturas de dados, programação orientada
+              a objetos, sistemas operacionais, redes de computadores, banco de dados e
+              engenharia de software. Desenvolvimento de projetos práticos que integram
+              teoria e demandas do mercado.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── Cursos e Certificados ── -->
+      <section class="section" aria-labelledby="courses-title">
+        <h2 class="section-title" id="courses-title">Cursos &amp; Certificados</h2>
+        <div class="timeline" role="list">
+
+          <article class="timeline-item" role="listitem">
+            <p class="timeline-period">2025 - Presente</p>
+            <h3 class="timeline-title">CS50: Introduction to Computer Science</h3>
+            <p class="timeline-subtitle">Harvard University · Online</p>
+            <p class="timeline-desc">
+              Um dos cursos de ciência da computação mais reconhecidos do mundo.
+              Abrange C, Python, SQL, HTML/CSS/JavaScript e desenvolvimento web.
+            </p>
+          </article>
+
+          <article class="timeline-item" role="listitem">
+            <p class="timeline-period">2025</p>
+            <h3 class="timeline-title">Developer Certification: Foundational C# with Microsoft</h3>
+            <p class="timeline-subtitle">Miicrosoft + freeCodeCamp · Online</p>
+            <p class="timeline-desc">
+              Um curso de certificação oficial da Microsoft + freeCodeCamp que valida habilidades fundamentais em C#,
+              incluindo sintaxe, estruturas de controle, programação orientada a objetos e desenvolvimento.
+            </p>
+          </article>
+
+          <article class="timeline-item" role="listitem">
+            <p class="timeline-period">2023</p>
+            <h3 class="timeline-title">Trabalhando em Equipes Ágeis</h3>
+            <p class="timeline-subtitle">DIO · Online</p>
+            <p class="timeline-desc">
+              Um curso focado em metodologias ágeis, especialmente Scrum e Kanban, para desenvolvimento de software.
+              Cobre práticas de colaboração, gestão de projetos e entrega contínua.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Habilidades Técnicas ── -->
+      <section class="section" aria-labelledby="skills-title">
+        <h2 class="section-title" id="skills-title">Principais Habilidades Técnicas</h2>
+        <div class="skills-grid" role="list">
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🟣</div>
+            <p class="skill-name">.NET</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">☕</div>
+            <p class="skill-name">Java</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🐳</div>
+            <p class="skill-name">Docker</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🐰</div>
+            <p class="skill-name">RabbitMQ</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">☁️</div>
+            <p class="skill-name">AWS</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🗄️</div>
+            <p class="skill-name">SQL</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🔧</div>
+            <p class="skill-name">GIT</p>
+          </article>
+
+          <article class="skill-card" role="listitem">
+            <div class="skill-icon" aria-hidden="true">🔌</div>
+            <p class="skill-name">REST APIs</p>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <p>© 2026 <strong>Alanis Quintana Teixeira</strong> · Desenvolvido com HTML, CSS e JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

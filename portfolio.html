@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projetos de desenvolvimento de software de Alanis Quintana Teixeira." />
+  <title>Alanis Quintana | Portfólio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark-theme');</script>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR — menu fixo presente em todas as páginas
+       ========================================== -->
+  <header>
+    <nav class="navbar" aria-label="Navegação principal">
+      <div class="nav-container">
+
+        <a href="index.html" class="nav-logo" aria-label="Início">AQT</a>
+
+        <ul class="nav-menu" id="nav-menu" role="list">
+          <li><a href="index.html"     class="nav-link">Sobre Mim</a></li>
+          <li><a href="formacao.html"  class="nav-link">Formação</a></li>
+          <li><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+          <li><a href="contato.html"   class="nav-link">Contato</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <button id="btn-theme" class="btn-theme" aria-label="Alternar tema claro/escuro">
+            <span class="icon-sun"  aria-hidden="true">☀️</span>
+            <span class="icon-moon" aria-hidden="true">🌙</span>
+          </button>
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==========================================
+       CONTEÚDO PRINCIPAL
+       ========================================== -->
+  <main>
+    <div class="container">
+
+      <!-- Cabeçalho da página -->
+      <section style="padding-top: 1rem;">
+        <h1 style="font-size: 2rem; font-weight: 800;">Meus Projetos</h1>
+        <p style="color: var(--color-text-muted); margin-top: 0.5rem; font-size: 1rem;">
+          Projetos desenvolvidos durante a graduação e em desafios técnicos profissionais.
+        </p>
+      </section>
+
+      <!-- ── Cards de Projeto ── -->
+      <section class="section" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title">Principais Projetos no GitHub</h2>
+        <div class="projects-grid" role="list">
+
+          <!-- ── Projeto 1: Itaú Backend ── -->
+          <article class="project-card" role="listitem">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🏦</div>
+              <div>
+                <h3 class="project-title">Desafio Backend — Itaú Unibanco</h3>
+                <p class="project-org">Itaú Unibanco</p>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Solução completa para o desafio técnico de backend do Itaú Unibanco.
+              Implementação de API RESTful com foco em boas práticas de desenvolvimento,
+              qualidade de código, testes automatizados e padrões de arquitetura aplicados
+              ao contexto do setor financeiro.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">Spring Boot</span>
+              <span class="project-tag">REST API</span>
+              <span class="project-tag">JUnit</span>
+            </div>
+
+            <!-- Link para o repositório no GitHub — abre em nova aba com segurança -->
+            <a
+              href="https://github.com/alanisquintana/desafio-itau-backend"
+              class="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver projeto Desafio Itaú no GitHub (abre em nova aba)"
+            >
+              Ver no GitHub ↗
+            </a>
+          </article>
+
+          <!-- ── Projeto 2: Astro Battle Game (CS50) ── -->
+          <article class="project-card" role="listitem">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🚀</div>
+              <div>
+                <h3 class="project-title">Astro Battle Game</h3>
+                <p class="project-org">CS50 — Harvard University</p>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Jogo interativo desenvolvido em Scratch como projeto final do curso
+              <em>CS50: Introduction to Computer Science</em> de Harvard. O jogador
+              controla uma nave espacial e enfrenta ondas de inimigos em um cenário
+              de batalha interestelar, com sistema de pontuação e progressão de
+              dificuldade.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Scratch</span>
+              <span class="project-tag">Game Design</span>
+              <span class="project-tag">CS50</span>
+              <span class="project-tag">Harvard</span>
+            </div>
+
+            <a
+              href="https://github.com/alanisquintana/astro-battle-game-harvard"
+              class="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver projeto Astro Battle Game no GitHub (abre em nova aba)"
+            >
+              Ver no GitHub ↗
+            </a>
+          </article>
+
+          <!-- ── Projeto 3: Oak Challenge ── -->
+          <article class="project-card" role="listitem">
+            <div class="project-header">
+              <div class="project-icon" aria-hidden="true">🌳</div>
+              <div>
+                <h3 class="project-title">Desafio Técnico — Oak Tecnologia</h3>
+                <p class="project-org">Oak Tecnologia</p>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Implementação do desafio técnico para processo seletivo da Oak Tecnologia.
+              Demonstração de habilidades práticas em desenvolvimento de software,
+              organização e legibilidade de código, resolução de problemas e boas
+              práticas de engenharia de software.
+            </p>
+
+            <div class="project-tags">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">Algoritmos</span>
+              <span class="project-tag">Clean Code</span>
+              <span class="project-tag">Testes</span>
+            </div>
+
+            <a
+              href="https://github.com/alanisquintana/oak-challenge"
+              class="project-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver projeto Oak Challenge no GitHub (abre em nova aba)"
+            >
+              Ver no GitHub ↗
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── Call-to-action: perfil completo no GitHub ── -->
+      <section class="section">
+        <div class="card" style="text-align: center;">
+          <p style="font-size: 1rem; color: var(--color-text-muted);">
+            Quer ver mais? Confira meu perfil completo no GitHub.
+          </p>
+          <a
+            href="https://github.com/alanisquintana"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="margin-top: 1rem; display: inline-flex;"
+            aria-label="Ver perfil completo no GitHub (abre em nova aba)"
+          >
+            Ver Perfil no GitHub ↗
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer>
+    <p>© 2026 <strong>Alanis Quintana Teixeira</strong> · Desenvolvido com HTML, CSS e JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
